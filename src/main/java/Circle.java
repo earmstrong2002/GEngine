@@ -1,12 +1,14 @@
 import java.awt.*;
 
 /** A class representing a circle that can draw itself. */
-public class Circle implements Drawable, GShape {
+public class Circle implements GSprite {
 
   /** The radius of the circle, in pixels. */
   private int radius;
+
   /** The coordinates of the center of the circle. */
   private Point location;
+
   /** The color of the circle. */
   private Color color;
 

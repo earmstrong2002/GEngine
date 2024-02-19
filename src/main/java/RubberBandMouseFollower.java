@@ -18,6 +18,7 @@ public class RubberBandMouseFollower implements GObject, MouseListener {
     setDeadZoneRadius(deadZoneRadius);
   }
 
+  @Override
   public void update(GPanel panel) {
     GPoint mousePosition = panel.getMousePositionMeters();
     if (mousePosition != null) {

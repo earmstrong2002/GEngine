@@ -2,6 +2,8 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 public class GEngine {
+  // TODO: Extract demo-specific stuff to its own class with a runnable main method; GEngine should
+  // not have that type of code in it.
   public static final int PIXELS_PER_METER = 10;
   private static final Dimension WINDOW_SIZE = new Dimension(1024, 512);
   private static final int FRAME_RATE = 60;
@@ -26,7 +28,7 @@ public class GEngine {
     while (true) {
       long startNanos = System.nanoTime();
       gPanel.update();
-      //      preciseWait(startNanos, FRAME_NANOS);
+      preciseWait(startNanos, FRAME_NANOS);
     }
   }
 

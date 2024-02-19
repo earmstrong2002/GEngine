@@ -7,6 +7,9 @@ public class Circle implements Drawable {
   /** The radius of the circle, in pixels. */
   private double radius;
 
+  // TODO: It may be possible to cast the Graphics object passed to the draw method to Graphics2D,
+  // which would allow for varied stroke weight and such. Consider changing it to use that instead
+  // of kluging the stroke.
   private double strokeRadius;
 
   /** The coordinates of the center of the circle. */

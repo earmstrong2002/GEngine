@@ -41,7 +41,7 @@ public class RubberBandMouseFollower extends MouseFollower implements MouseListe
     return position;
   }
 
-  public void setPosition(GPoint position) {
+  public void setPosition(@NotNull GPoint position) {
     this.position = position;
     getSprite().setPosition(position);
   }

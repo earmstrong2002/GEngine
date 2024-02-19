@@ -2,10 +2,12 @@ import java.awt.*;
 import org.jetbrains.annotations.NotNull;
 
 /** A class representing a circle that can draw itself. */
-public class Circle implements GSprite {
+public class Circle implements Drawable {
 
   /** The radius of the circle, in pixels. */
   private double radius;
+
+  private double strokeRadius;
 
   /** The coordinates of the center of the circle. */
   private GPoint position;
@@ -13,18 +15,32 @@ public class Circle implements GSprite {
   /** The color of the circle. */
   private Color color;
 
+  private Color strokeColor;
+
   /**
-   * Instantiates a circle with the given radius, position, and color.
+   * Instantiates a circle with the given radius, position, fill color, stroke color, and stroke
+   * width.
    *
    * @param radius the radius of the circle, in meters
    * @param position the position of the circle
-   * @param color the color of the circle.
+   * @param fillColor the fill color of the circle.
    */
-  public Circle(double radius, GPoint position, Color color) {
-    // TODO allow for differing stroke and fill color
-    this.radius = radius;
-    this.position = position;
-    this.color = color;
+  public Circle(
+      double radius,
+      @NotNull GPoint position,
+      @NotNull Color fillColor,
+      @NotNull Color strokeColor,
+      double strokeRadius) {
+    // TODO allow for differing stroke and fill fillColor
+    setRadius(radius);
+    setStrokeRadius(strokeRadius);
+    setPosition(position);
+    setFillColor(fillColor);
+    setStrokeColor(strokeColor);
+  }
+
+  public Color getColor() {
+    return color;
   }
 
   /**
@@ -34,6 +50,20 @@ public class Circle implements GSprite {
    */
   @Override
   public void draw(Graphics graphics) {
+    drawStroke(graphics);
+    drawFill(graphics);
+  }
+
+  private void drawStroke(Graphics graphics) {
+    graphics.setColor(getStrokeColor());
+    int x = GEngine.metersToPixels(position.x - strokeRadius);
+    int y = GEngine.metersToPixels((position.y - strokeRadius));
+    int diameter = GEngine.metersToPixels(strokeRadius * 2);
+    graphics.setColor(strokeColor);
+    graphics.fillOval(x, y, diameter, diameter);
+  }
+
+  private void drawFill(Graphics graphics) {
     int x = (GEngine.metersToPixels(position.x - radius));
     int y = (GEngine.metersToPixels(position.y - radius));
     int diameter = GEngine.metersToPixels(radius * 2);
@@ -41,14 +71,39 @@ public class Circle implements GSprite {
     graphics.fillOval(x, y, diameter, diameter);
   }
 
+  public Color getStrokeColor() {
+    return strokeColor;
+  }
+
   /**
    * Retrieves the position of this circle.
    *
    * @return the position of this circle.
    */
-  @Override
   public GPoint getPosition() {
     return position;
+  }
+
+  public double getStrokeRadius() {
+    return strokeRadius;
+  }
+
+  public void setStrokeRadius(double strokeRadius) {
+    if (strokeRadius <= getRadius()) {
+      throw new IllegalArgumentException("Stroke radius must be greater than fill radius.");
+    }
+    this.strokeRadius = strokeRadius;
+  }
+
+  public double getRadius() {
+    return radius;
+  }
+
+  public void setRadius(double radius) {
+    if (radius <= 0) {
+      throw new IllegalArgumentException("Radius must be greater than zero");
+    }
+    this.radius = radius;
   }
 
   /**
@@ -56,8 +111,15 @@ public class Circle implements GSprite {
    *
    * @param position the new position of this circle.
    */
-  @Override
   public void setPosition(@NotNull GPoint position) {
     this.position = position;
+  }
+
+  public void setFillColor(@NotNull Color color) {
+    this.color = color;
+  }
+
+  public void setStrokeColor(@NotNull Color strokeColor) {
+    this.strokeColor = strokeColor;
   }
 }

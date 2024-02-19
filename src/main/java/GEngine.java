@@ -13,8 +13,10 @@ public class GEngine {
   public static void main(String[] args) {
     GPanel gPanel = new GPanel();
     gPanel.setBackground(Color.BLACK);
-    RubberBandMouseFollower mouseFollower =
-        new RubberBandMouseFollower(new Circle(1, new GPoint(), Color.white), 0.1, 1);
+    Circle circle = new Circle(1, new GPoint(), Color.WHITE, Color.RED, 1.3);
+    RubberBandMouseFollowerSprite mouseFollowerSprite =
+        new RubberBandMouseFollowerSprite(circle, new GPoint());
+    MouseFollower mouseFollower = new RubberBandMouseFollower(mouseFollowerSprite, 0.02, 0.1, 1);
     gPanel.addGObject(mouseFollower);
     gPanel.addMouseListener(mouseFollower);
     GFrame gFrame = new GFrame(gPanel);

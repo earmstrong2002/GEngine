@@ -24,14 +24,14 @@ public class Main {
     while (true) {
       long start = System.nanoTime();
       gPanel.update();
+      long end = System.nanoTime();
+      long frameDuration = end - start;
+      System.out.println(frameDuration / 1000000);
       try {
         Thread.sleep(FRAME_MILLIS);
       } catch (InterruptedException e) {
         System.out.println("Frame delay issue detected");
       }
-      long end = System.nanoTime();
-      long frameDuration = end - start;
-      System.out.println(frameDuration / 1000000);
     }
   }
 }

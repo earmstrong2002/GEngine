@@ -33,7 +33,7 @@ public class GPanel extends JPanel {
     for (GObject child : children) {
       child.update(this);
     }
-    repaint();
+    paintImmediately(getBounds());
   }
 
   /**

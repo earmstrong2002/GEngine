@@ -26,7 +26,7 @@ public class GEngine {
     while (true) {
       long startNanos = System.nanoTime();
       gPanel.update();
-      preciseWait(startNanos, FRAME_NANOS);
+      //      preciseWait(startNanos, FRAME_NANOS);
     }
   }
 
@@ -49,13 +49,13 @@ public class GEngine {
   }
 
   public static double pixelsToMeters(int pixels) {
-    return pixels * PIXELS_PER_METER;
+    return (double) pixels / PIXELS_PER_METER;
   }
 
   public static int metersToPixels(double meters) {
     if (Double.isInfinite(meters) || Double.isNaN(meters)) {
       throw new IllegalArgumentException("Cannot convert " + meters + " meters to pixels.");
     }
-    return (int) Math.round(meters / PIXELS_PER_METER);
+    return (int) Math.round(meters * PIXELS_PER_METER);
   }
 }

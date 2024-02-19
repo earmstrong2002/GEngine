@@ -55,6 +55,14 @@ public class GVector {
     }
   }
 
+  public double getXMagnitude() {
+    return magnitude * Math.cos(direction);
+  }
+
+  public double getYMagintude() {
+    return magnitude * Math.sin(direction);
+  }
+
   /**
    * Retrieves the direction of this vector.
    *

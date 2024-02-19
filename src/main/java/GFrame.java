@@ -14,7 +14,7 @@ public class GFrame extends JFrame {
   public GFrame(GPanel gPanel) {
     super();
     this.gPanel = gPanel;
-    setResizable(false);
+    //    setResizable(false);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     getContentPane().add(gPanel);
   }

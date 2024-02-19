@@ -51,4 +51,14 @@ public class GPanel extends JPanel {
     }
     repaint();
   }
+
+  public GPoint getMousePositionMeters() {
+    Point mousePosition = getMousePosition();
+    if (mousePosition == null) {
+      return null;
+    }
+    double x = (double) mousePosition.x / Main.PIXELS_PER_METER;
+    double y = (double) mousePosition.y / Main.PIXELS_PER_METER;
+    return new GPoint(x, y);
+  }
 }

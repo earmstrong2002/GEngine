@@ -8,14 +8,14 @@ public class Circle implements GSprite {
   private int radius;
 
   /** The coordinates of the center of the circle. */
-  private Point position;
+  private GPoint position;
 
   /** The color of the circle. */
   private Color color;
 
-  public Circle(int radius, Point location, Color color) {
+  public Circle(int radius, GPoint position, Color color) {
     this.radius = radius;
-    this.position = location;
+    this.position = position;
     this.color = color;
   }
 
@@ -26,20 +26,20 @@ public class Circle implements GSprite {
    */
   @Override
   public void draw(Graphics graphics) {
-    int x = position.x - radius;
-    int y = position.y - radius;
+    int x = (int) (position.x * Main.PIXELS_PER_METER - radius);
+    int y = (int) (position.y * Main.PIXELS_PER_METER - radius);
     int diameter = radius * 2;
     graphics.setColor(color);
     graphics.fillOval(x, y, diameter, diameter);
   }
 
   @Override
-  public Point getPosition() {
+  public GPoint getPosition() {
     return position;
   }
 
   @Override
-  public void setPosition(@NotNull Point position) {
+  public void setPosition(@NotNull GPoint position) {
     this.position = position;
   }
 }

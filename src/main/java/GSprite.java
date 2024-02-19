@@ -1,8 +1,7 @@
-import java.awt.*;
 import org.jetbrains.annotations.NotNull;
 
 public interface GSprite extends Drawable {
-  Point getPosition();
+  GPoint getPosition();
 
-  void setPosition(@NotNull Point position);
+  void setPosition(@NotNull GPoint position);
 }

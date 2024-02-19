@@ -34,10 +34,9 @@ public class Circle implements GSprite {
    */
   @Override
   public void draw(Graphics graphics) {
-    int pixelRadius = GEngine.metersToPixels(radius);
-    int x = (GEngine.metersToPixels(position.x) - pixelRadius);
-    int y = (GEngine.metersToPixels(position.y) - pixelRadius);
-    int diameter = pixelRadius * 2;
+    int x = (GEngine.metersToPixels(position.x - radius));
+    int y = (GEngine.metersToPixels(position.y - radius));
+    int diameter = GEngine.metersToPixels(radius * 2);
     graphics.setColor(color);
     graphics.fillOval(x, y, diameter, diameter);
   }

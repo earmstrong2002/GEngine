@@ -10,7 +10,7 @@ public class Main {
     GPanel gPanel = new GPanel();
     gPanel.setBackground(Color.BLACK);
     MouseFollower mouseFollower =
-        new MouseFollower(new Circle(10, new GPoint(), Color.white), 0.1, 3);
+        new MouseFollower(new Circle(1, new GPoint(), Color.white), 0.1, 3);
     gPanel.addGObject(mouseFollower);
     gPanel.addMouseListener(mouseFollower);
     GFrame gFrame = new GFrame(gPanel);
@@ -22,16 +22,16 @@ public class Main {
 
   private static void mainLoop(GPanel gPanel) {
     while (true) {
-      gPanel.update();
       long start = System.nanoTime();
-      long end = System.nanoTime();
-      long frameDuration = end - start;
-      System.out.println(frameDuration);
+      gPanel.update();
       try {
         Thread.sleep(FRAME_MILLIS);
       } catch (InterruptedException e) {
         System.out.println("Frame delay issue detected");
       }
+      long end = System.nanoTime();
+      long frameDuration = end - start;
+      System.out.println(frameDuration / 1000000);
     }
   }
 }

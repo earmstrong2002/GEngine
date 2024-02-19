@@ -2,7 +2,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import org.jetbrains.annotations.NotNull;
 
-public class RubberBandMouseFollower implements GObject, MouseListener {
+public class RubberBandMouseFollower extends MouseFollower implements MouseListener {
   // TODO: Convert MouseFollower to an abstract class and move current implementation to a subclass.
   private GSprite sprite;
   private double accelerationRate;
@@ -10,16 +10,14 @@ public class RubberBandMouseFollower implements GObject, MouseListener {
   private double deadZoneRadius;
   private GPoint position;
 
-  public RubberBandMouseFollower(GSprite sprite, double accelerationRate, double deadZoneRadius) {
-    setSprite(sprite);
-    setPosition(new GPoint());
-    setAccelerationRate(accelerationRate);
+  public RubberBandMouseFollower(
+      @NotNull GSprite sprite, double accelerationRate, double deadZoneRadius) {
+    super(sprite, accelerationRate, deadZoneRadius);
     setVelocity(new GVector());
-    setDeadZoneRadius(deadZoneRadius);
   }
 
   @Override
-  public void update(GPanel panel) {
+  public void update(@NotNull GPanel panel) {
     GPoint mousePosition = panel.getMousePositionMeters();
     if (mousePosition != null) {
       double deltaX = mousePosition.x - position.x;

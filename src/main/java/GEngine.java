@@ -26,7 +26,7 @@ public class GEngine {
     while (true) {
       long startNanos = System.nanoTime();
       gPanel.update();
-      preciseWait(startNanos);
+      preciseWait(startNanos, FRAME_NANOS);
     }
   }
 

@@ -1,6 +1,8 @@
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class MouseFollower implements GObject {
+public abstract class MouseFollower implements GObject, MouseListener, MouseMotionListener {
   private GSprite sprite;
   private double accelerationRate;
   private double deadZoneRadius;

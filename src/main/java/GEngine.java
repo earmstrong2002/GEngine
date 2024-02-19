@@ -30,7 +30,7 @@ public class GEngine {
     }
   }
 
-  private static void preciseWait(long startNanos, long durationNanos) {
+  public static void preciseWait(long startNanos, long durationNanos) {
     while (System.nanoTime() - startNanos < durationNanos - 3e6) {
       try {
         Thread.sleep(1);
@@ -41,5 +41,16 @@ public class GEngine {
     while (System.nanoTime() - startNanos < durationNanos) {
       // Spinlock for the remaining duration of the frame.
     }
+  }
+
+  public static double pixelsToMeters(int pixels) {
+    return pixels * PIXELS_PER_METER;
+  }
+
+  public static int metersToPixels(double meters) {
+    if (Double.isInfinite(meters) || Double.isNaN(meters)) {
+      throw new IllegalArgumentException("Cannot convert " + meters + " meters to pixels.");
+    }
+    return (int) Math.round(meters / PIXELS_PER_METER);
   }
 }

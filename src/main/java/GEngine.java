@@ -113,8 +113,8 @@ public class GEngine {
    * @param currentNanos current nano time.
    * @param sleepImprecisionAllowanceMillis number of milliseconds to allow to account for sleep
    *     imprecision.
-   * @return number of milliseconds for which to sleep before spinlocking for the remaining duration
-   *     of the pause.
+   * @return number of milliseconds for which to sleep before spin-locking for the remaining
+   *     duration of the pause.
    */
   private static long calcMillisToSleep(
       long targetNanos, long currentNanos, long sleepImprecisionAllowanceMillis) {

@@ -36,20 +36,25 @@ public class GEngine {
 
   public static void preciseWait(long startNanos, long durationNanos) {
     long targetNanos = startNanos + durationNanos;
-    long conservativeTargetNanos = targetNanos - (long) 3e6;
-    // While there is enough time left to wait that we needn't worry about the imprecision of
-    // Thread::sleep, sleep one millisecond at a time.
-    while (System.nanoTime() < conservativeTargetNanos) {
-      try {
-        //noinspection BusyWait
-        Thread.sleep(1);
-      } catch (InterruptedException e) {
-        log.info("Thread was interrupted while sleeping.");
-      }
+    long sleepImprecisionAllowanceMillis = 10;
+    long millisToSleep =
+        calcMillisToSleep(targetNanos, System.nanoTime(), sleepImprecisionAllowanceMillis);
+    try {
+      Thread.sleep(millisToSleep);
+    } catch (InterruptedException e) {
+      log.warning(e.getMessage());
     }
     // Spinlock for the remaining duration of the frame.
     //noinspection StatementWithEmptyBody
     while (System.nanoTime() < targetNanos) {}
+  }
+
+  private static long calcMillisToSleep(
+      long targetNanos, long currentNanos, long sleepImprecisionAllowanceMillis) {
+    long durationNanos = targetNanos - currentNanos;
+    long durationMillis = durationNanos / (long) 1e9;
+    long durationMillisWithAllowance = durationMillis - sleepImprecisionAllowanceMillis;
+    return Math.max(durationMillisWithAllowance, 0);
   }
 
   public static double pixelsToMeters(int pixels) {

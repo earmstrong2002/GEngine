@@ -12,7 +12,7 @@ public class GEngine {
     GPanel gPanel = new GPanel();
     gPanel.setBackground(Color.BLACK);
     MouseFollower mouseFollower =
-        new MouseFollower(new Circle(1, new GPoint(), Color.white), 0.1, 3);
+        new MouseFollower(new Circle(1, new GPoint(), Color.white), 0.1, 1);
     gPanel.addGObject(mouseFollower);
     gPanel.addMouseListener(mouseFollower);
     GFrame gFrame = new GFrame(gPanel);

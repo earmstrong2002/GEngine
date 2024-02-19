@@ -4,6 +4,7 @@ import java.awt.event.MouseListener;
 import org.jetbrains.annotations.NotNull;
 
 public class MouseFollower implements GObject, MouseListener {
+  // TODO: Convert MouseFollower to an abstract class and move current implementation to a subclass.
   private GSprite sprite;
   private double accelerationRate;
   private GVector velocity;

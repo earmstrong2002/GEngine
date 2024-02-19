@@ -8,6 +8,7 @@ public class GEngine {
   private static final Dimension WINDOW_SIZE = new Dimension(1024, 512);
   private static final int FRAME_RATE = 60;
   private static final long FRAME_NANOS = (long) 1e9 / FRAME_RATE;
+  private static final long SLEEP_IMPRECISION_ALLOWANCE_MILLIS = 10;
   private static Logger log = Logger.getLogger(GEngine.class.getName());
 
   public static void main(String[] args) {
@@ -36,9 +37,8 @@ public class GEngine {
 
   public static void preciseWait(long startNanos, long durationNanos) {
     long targetNanos = startNanos + durationNanos;
-    long sleepImprecisionAllowanceMillis = 10;
     long millisToSleep =
-        calcMillisToSleep(targetNanos, System.nanoTime(), sleepImprecisionAllowanceMillis);
+        calcMillisToSleep(targetNanos, System.nanoTime(), SLEEP_IMPRECISION_ALLOWANCE_MILLIS);
     try {
       Thread.sleep(millisToSleep);
     } catch (InterruptedException e) {

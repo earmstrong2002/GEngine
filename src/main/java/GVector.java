@@ -1,6 +1,6 @@
 /** The GVector class represents a vector with magnitude and direction. */
 public class GVector {
-  /** The magnitude of the vector. The units of this vector depend on the type of the vector: */
+  /** The magnitude of the vector. */
   private double magnitude;
 
   /**
@@ -55,10 +55,20 @@ public class GVector {
     }
   }
 
+  /**
+   * Retrieves the magnitude of the x component of this vector.
+   *
+   * @return the magnitude of the x component of this vector.
+   */
   public double getXMagnitude() {
     return magnitude * Math.cos(direction);
   }
 
+  /**
+   * Retrieves the magnitude of the y component of this vector.
+   *
+   * @return the magnitude of the y component of this vector.
+   */
   public double getYMagintude() {
     return magnitude * Math.sin(direction);
   }

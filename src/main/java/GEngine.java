@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.util.logging.Logger;
 
 public class GEngine {
   public static final int PIXELS_PER_METER = 10;
   private static final Dimension WINDOW_SIZE = new Dimension(1024, 512);
   private static final int FRAME_RATE = 60;
-  private static final int FRAME_MILLIS = 1000 / FRAME_RATE;
+  private static final long FRAME_NANOS = (long) 1e9 / FRAME_RATE;
+  private static Logger log = Logger.getLogger(GEngine.class.getName());
 
   public static void main(String[] args) {
     GPanel gPanel = new GPanel();
@@ -22,16 +24,22 @@ public class GEngine {
 
   private static void mainLoop(GPanel gPanel) {
     while (true) {
-      long start = System.nanoTime();
+      long startNanos = System.nanoTime();
       gPanel.update();
-      long end = System.nanoTime();
-      long frameDuration = end - start;
-      System.out.println(frameDuration / 1000000);
+      preciseWait(startNanos);
+    }
+  }
+
+  private static void preciseWait(long startNanos) {
+    while (System.nanoTime() - startNanos < FRAME_NANOS - 3e6) {
       try {
-        Thread.sleep(FRAME_MILLIS);
+        Thread.sleep(1);
       } catch (InterruptedException e) {
-        System.out.println("Frame delay issue detected");
+        log.info("Thread was interrupted while sleeping.");
       }
+    }
+    while (System.nanoTime() - startNanos < FRAME_NANOS) {
+      // Spinlock for the remaining duration of the frame.
     }
   }
 }

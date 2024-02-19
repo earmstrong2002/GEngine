@@ -30,15 +30,15 @@ public class GEngine {
     }
   }
 
-  private static void preciseWait(long startNanos) {
-    while (System.nanoTime() - startNanos < FRAME_NANOS - 3e6) {
+  private static void preciseWait(long startNanos, long durationNanos) {
+    while (System.nanoTime() - startNanos < durationNanos - 3e6) {
       try {
         Thread.sleep(1);
       } catch (InterruptedException e) {
         log.info("Thread was interrupted while sleeping.");
       }
     }
-    while (System.nanoTime() - startNanos < FRAME_NANOS) {
+    while (System.nanoTime() - startNanos < durationNanos) {
       // Spinlock for the remaining duration of the frame.
     }
   }

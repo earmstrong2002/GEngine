@@ -1,4 +1,5 @@
 import java.awt.*;
+import org.jetbrains.annotations.NotNull;
 
 /** A class representing a circle that can draw itself. */
 public class Circle implements GSprite {
@@ -7,14 +8,15 @@ public class Circle implements GSprite {
   private int radius;
 
   /** The coordinates of the center of the circle. */
-  private Point location;
+  private Point position;
 
   /** The color of the circle. */
   private Color color;
 
-  public Circle(int radius, Point location) {
+  public Circle(int radius, Point location, Color color) {
     this.radius = radius;
-    this.location = location;
+    this.position = location;
+    this.color = color;
   }
 
   /**
@@ -24,10 +26,20 @@ public class Circle implements GSprite {
    */
   @Override
   public void draw(Graphics graphics) {
-    int x = location.x - radius;
-    int y = location.y - radius;
+    int x = position.x - radius;
+    int y = position.y - radius;
     int diameter = radius * 2;
     graphics.setColor(color);
     graphics.fillOval(x, y, diameter, diameter);
+  }
+
+  @Override
+  public Point getPosition() {
+    return position;
+  }
+
+  @Override
+  public void setPosition(@NotNull Point position) {
+    this.position = position;
   }
 }

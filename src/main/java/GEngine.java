@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Main {
+public class GEngine {
   public static final int PIXELS_PER_METER = 10;
   private static final Dimension WINDOW_SIZE = new Dimension(1024, 512);
   private static final int FRAME_RATE = 60;

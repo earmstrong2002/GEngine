@@ -68,7 +68,7 @@ public class RubberBandMouseFollower extends MouseFollower implements MouseListe
   public void setSprite(@NotNull GSprite sprite) {
     if (!(sprite instanceof RubberBandMouseFollowerSprite)) {
       throw new IllegalArgumentException(
-          "Sprite must be an instance of gengine.mouse_follower.RubberBandMouseFollowerSprite");
+          "Sprite must be an instance of mouse_follower.RubberBandMouseFollowerSprite");
     }
     this.sprite = sprite;
   }

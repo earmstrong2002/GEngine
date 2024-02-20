@@ -8,7 +8,7 @@ public class GFrame extends JFrame {
   private GPanel gPanel;
 
   /**
-   * Instantiates a gengine.GFrame.
+   * Instantiates a GFrame.
    *
    * @param gPanel The primary panel.
    */
@@ -32,7 +32,7 @@ public class GFrame extends JFrame {
   @Override
   public void setVisible(boolean b) {
     if (b && getTitle().isEmpty()) {
-      throw new IllegalStateException("Cannot launch a gengine.GFrame with no title.");
+      throw new IllegalStateException("Cannot launch a GFrame with no title.");
     }
     super.setVisible(b);
   }

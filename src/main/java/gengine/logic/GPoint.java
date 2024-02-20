@@ -3,8 +3,8 @@ package gengine.logic;
 import java.awt.*;
 
 /**
- * The gengine.logic.GPoint class represents a coordinate pair. The x and y coordinates are in
- * meters, as per the standard in Gengine.
+ * The GPoint class represents a coordinate pair. The x and y coordinates are in meters, as per the
+ * standard in Gengine.
  */
 public class GPoint {
   /** The x-coordinate of this point. */
@@ -14,8 +14,7 @@ public class GPoint {
   public double y;
 
   /**
-   * Instantiates a gengine.logic.GPoint, initializing the coordinates to the values in the given
-   * Point.
+   * Instantiates a GPoint, initializing the coordinates to the values in the given Point.
    *
    * @param point the point whose coordinates are to be copied.
    */
@@ -24,16 +23,16 @@ public class GPoint {
     this.y = point.y;
   }
 
-  /** Instantiates a gengine.logic.GPoint at the default coordinates of (0, 0). */
+  /** Instantiates a GPoint at the default coordinates of (0, 0). */
   public GPoint() {
     this(0.0, 0.0);
   }
 
   /**
-   * Instantiates a gengine.logic.GPoint at the given coordinates.
+   * Instantiates a GPoint at the given coordinates.
    *
-   * @param x x coordinate to use for the new gengine.logic.GPoint.
-   * @param y y coordinate to use for the new gengine.logic.GPoint.
+   * @param x x coordinate to use for the new GPoint.
+   * @param y y coordinate to use for the new GPoint.
    */
   public GPoint(double x, double y) {
     this.x = x;

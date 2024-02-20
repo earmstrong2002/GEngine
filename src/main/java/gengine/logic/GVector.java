@@ -1,6 +1,6 @@
 package gengine.logic;
 
-/** The gengine.logic.GVector class represents a vector with magnitude and direction. */
+/** The GVector class represents a vector with magnitude and direction. */
 public class GVector {
   /** The magnitude of the vector. */
   private double magnitude;
@@ -10,16 +10,13 @@ public class GVector {
    */
   private double direction;
 
-  /**
-   * Constructs a gengine.logic.GVector with default values of zero for both magnitude and
-   * direction.
-   */
+  /** Constructs a GVector with default values of zero for both magnitude and direction. */
   public GVector() {
     this(0.0, 0.0);
   }
 
   /**
-   * Constructs a gengine.logic.GVector with the given magnitude and direction values.
+   * Constructs a GVector with the given magnitude and direction values.
    *
    * @param magnitude magnitude of the vector. Cannot be negative.
    * @param direction direction of the vector, in radians.

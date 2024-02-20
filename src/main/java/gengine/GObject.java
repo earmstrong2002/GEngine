@@ -2,10 +2,10 @@ package gengine;
 
 import gengine.drawable.GSprite;
 
-/** The gengine.GObject interface represents game objects. */
+/** The GObject interface represents game objects. */
 public interface GObject {
   /**
-   * Retrieves this gengine.GObject's sprite.
+   * Retrieves this GObject's sprite.
    *
    * @return the sprite associated with this object.
    */

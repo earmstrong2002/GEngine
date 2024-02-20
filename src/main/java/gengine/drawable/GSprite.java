@@ -1,6 +1,12 @@
+package gengine.drawable;
+
+import gengine.logic.GPoint;
 import org.jetbrains.annotations.NotNull;
 
-/** The GSprite iterface represents a drawable sprite associated with a GObject. */
+/**
+ * The gengine.drawable.GSprite iterface represents a drawable sprite associated with a
+ * gengine.GObject.
+ */
 public interface GSprite extends Drawable {
   /**
    * Retrieves the position of this sprite.

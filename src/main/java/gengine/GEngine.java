@@ -1,12 +1,20 @@
+package gengine;
+
+import gengine.drawable.Circle;
+import gengine.logic.GPoint;
+import gengine.mouse_follower.MouseFollower;
+import gengine.mouse_follower.RubberBandMouseFollower;
+import gengine.mouse_follower.RubberBandMouseFollowerSprite;
 import java.awt.*;
 import java.util.logging.Logger;
 
 /**
- * The GEngine class contains the runnable main method that sets up a GEngine instance and runs the
- * main game loop.
+ * The gengine.GEngine class contains the runnable main method that sets up a gengine.GEngine
+ * instance and runs the main game loop.
  */
 public class GEngine {
-  // TODO: Extract demo-specific stuff to its own class with a runnable main method; GEngine should
+  // TODO: Extract demo-specific stuff to its own class with a runnable main method; gengine.GEngine
+  // should
   // not have that type of code in it.
   /** The conversion rate from the in-engine unit of distance, meters, to screen pixels. */
   public static final int PIXELS_PER_METER = 10;

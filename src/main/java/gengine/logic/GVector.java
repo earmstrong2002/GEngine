@@ -1,4 +1,6 @@
-/** The GVector class represents a vector with magnitude and direction. */
+package gengine.logic;
+
+/** The gengine.logic.GVector class represents a vector with magnitude and direction. */
 public class GVector {
   /** The magnitude of the vector. */
   private double magnitude;
@@ -8,13 +10,16 @@ public class GVector {
    */
   private double direction;
 
-  /** Constructs a GVector with default values of zero for both magnitude and direction. */
+  /**
+   * Constructs a gengine.logic.GVector with default values of zero for both magnitude and
+   * direction.
+   */
   public GVector() {
     this(0.0, 0.0);
   }
 
   /**
-   * Constructs a GVector with the given magnitude and direction values.
+   * Constructs a gengine.logic.GVector with the given magnitude and direction values.
    *
    * @param magnitude magnitude of the vector. Cannot be negative.
    * @param direction direction of the vector, in radians.
@@ -41,18 +46,6 @@ public class GVector {
   public void setMagnitude(double magnitude) {
     checkMagnitude(magnitude);
     this.magnitude = magnitude;
-  }
-
-  /**
-   * Ensures the given magnitude value is non-negative.
-   *
-   * @param magnitude magnitude value to check.
-   */
-  private void checkMagnitude(double magnitude) {
-    if (magnitude < 0) {
-      throw new IllegalArgumentException(
-          "Vector magnitude value " + magnitude + "is not valid because it is negative.");
-    }
   }
 
   /**
@@ -89,5 +82,17 @@ public class GVector {
    */
   public void setDirection(double direction) {
     this.direction = direction;
+  }
+
+  /**
+   * Ensures the given magnitude value is non-negative.
+   *
+   * @param magnitude magnitude value to check.
+   */
+  private void checkMagnitude(double magnitude) {
+    if (magnitude < 0) {
+      throw new IllegalArgumentException(
+          "Vector magnitude value " + magnitude + "is not valid because it is negative.");
+    }
   }
 }

@@ -1,3 +1,7 @@
+package gengine.drawable;
+
+import gengine.GEngine;
+import gengine.logic.GPoint;
 import java.awt.*;
 import org.jetbrains.annotations.NotNull;
 

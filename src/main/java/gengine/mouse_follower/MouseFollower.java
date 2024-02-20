@@ -1,3 +1,9 @@
+package gengine.mouse_follower;
+
+import gengine.GObject;
+import gengine.GPanel;
+import gengine.logic.GPoint;
+import gengine.drawable.GSprite;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import org.jetbrains.annotations.NotNull;
@@ -22,7 +28,13 @@ public abstract class MouseFollower implements GObject, MouseListener, MouseMoti
     return accelerationRate;
   }
 
-  public void setAccelerationRate(double accelerationRate) {
+  public double getDeadZoneRadius() {
+    return deadZoneRadius;
+  }
+
+  public GPoint getPosition() {
+    return position;
+  }  public void setAccelerationRate(double accelerationRate) {
     if (accelerationRate <= 0) {
       throw new IllegalArgumentException(
           "An acceleration rate of "
@@ -32,9 +44,7 @@ public abstract class MouseFollower implements GObject, MouseListener, MouseMoti
     this.accelerationRate = accelerationRate;
   }
 
-  public double getDeadZoneRadius() {
-    return deadZoneRadius;
-  }
+
 
   public void setDeadZoneRadius(double deadZoneRadius) {
     if (deadZoneRadius <= 0) {
@@ -42,10 +52,6 @@ public abstract class MouseFollower implements GObject, MouseListener, MouseMoti
           "A dead zone radius of " + deadZoneRadius + " is not valid because it is not positive.");
     }
     this.deadZoneRadius = deadZoneRadius;
-  }
-
-  public GPoint getPosition() {
-    return position;
   }
 
   public void setPosition(@NotNull GPoint position) {

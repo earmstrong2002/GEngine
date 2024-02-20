@@ -1,7 +1,11 @@
-/** The GObject interface represents game objects. */
+package gengine;
+
+import gengine.drawable.GSprite;
+
+/** The gengine.GObject interface represents game objects. */
 public interface GObject {
   /**
-   * Retrieves this GObject's sprite.
+   * Retrieves this gengine.GObject's sprite.
    *
    * @return the sprite associated with this object.
    */

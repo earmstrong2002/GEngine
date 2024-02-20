@@ -1,3 +1,9 @@
+package gengine.mouse_follower;
+
+import gengine.GEngine;
+import gengine.drawable.Circle;
+import gengine.drawable.GSprite;
+import gengine.logic.GPoint;
 import java.awt.*;
 import org.jetbrains.annotations.NotNull;
 

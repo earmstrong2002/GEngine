@@ -1,3 +1,5 @@
+package gengine.drawable;
+
 import java.awt.*;
 
 /** An interface for anything to be drawn to a component in a way defined by client code. */

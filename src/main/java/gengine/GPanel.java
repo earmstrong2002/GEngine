@@ -1,3 +1,6 @@
+package gengine;
+
+import gengine.logic.GPoint;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -5,24 +8,24 @@ import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The GPanel class provides a convenience layer between client code and JPanel, specifically geared
- * toward simple game development.
+ * The gengine.GPanel class provides a convenience layer between client code and JPanel,
+ * specifically geared toward simple game development.
  */
 public class GPanel extends JPanel {
 
   /** A list of all GObjects contained by this panel. */
   List<GObject> children;
 
-  /** Instantiates a new GPanel. */
+  /** Instantiates a new gengine.GPanel. */
   public GPanel() {
     super();
     children = new LinkedList<>();
   }
 
   /**
-   * Adds a GObject to this panel.
+   * Adds a gengine.GObject to this panel.
    *
-   * @param object the GObject to add
+   * @param object the gengine.GObject to add
    */
   public void addGObject(@NotNull GObject object) {
     children.add(object);

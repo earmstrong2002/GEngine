@@ -1,3 +1,9 @@
+package gengine.mouse_follower;
+
+import gengine.GPanel;
+import gengine.drawable.GSprite;
+import gengine.logic.GPoint;
+import gengine.logic.GVector;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import org.jetbrains.annotations.NotNull;
@@ -43,6 +49,10 @@ public class RubberBandMouseFollower extends MouseFollower implements MouseListe
     return position;
   }
 
+  public GSprite getSprite() {
+    return sprite;
+  }
+
   private void updatePosition() {
     double deltaX = velocity.getXMagnitude();
     double deltaY = velocity.getYMagintude();
@@ -55,14 +65,10 @@ public class RubberBandMouseFollower extends MouseFollower implements MouseListe
     getSprite().setPosition(position);
   }
 
-  public GSprite getSprite() {
-    return sprite;
-  }
-
   public void setSprite(@NotNull GSprite sprite) {
     if (!(sprite instanceof RubberBandMouseFollowerSprite)) {
       throw new IllegalArgumentException(
-          "Sprite must be an instance of RubberBandMouseFollowerSprite");
+          "Sprite must be an instance of gengine.mouse_follower.RubberBandMouseFollowerSprite");
     }
     this.sprite = sprite;
   }

@@ -1,4 +1,5 @@
-import java.awt.*;
+package gengine;
+
 import javax.swing.*;
 
 /** This class provides simpler ways to interact with a JFrame. */
@@ -7,7 +8,7 @@ public class GFrame extends JFrame {
   private GPanel gPanel;
 
   /**
-   * Instantiates a GFrame.
+   * Instantiates a gengine.GFrame.
    *
    * @param gPanel The primary panel.
    */
@@ -31,7 +32,7 @@ public class GFrame extends JFrame {
   @Override
   public void setVisible(boolean b) {
     if (b && getTitle().isEmpty()) {
-      throw new IllegalStateException("Cannot launch a GFrame with no title.");
+      throw new IllegalStateException("Cannot launch a gengine.GFrame with no title.");
     }
     super.setVisible(b);
   }

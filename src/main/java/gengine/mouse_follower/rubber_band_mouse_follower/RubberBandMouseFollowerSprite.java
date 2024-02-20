@@ -1,4 +1,4 @@
-package gengine.mouse_follower;
+package gengine.mouse_follower.rubber_band_mouse_follower;
 
 import gengine.GEngine;
 import gengine.drawable.Circle;

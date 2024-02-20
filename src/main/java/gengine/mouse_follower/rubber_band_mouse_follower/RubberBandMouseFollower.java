@@ -1,9 +1,10 @@
-package gengine.mouse_follower;
+package gengine.mouse_follower.rubber_band_mouse_follower;
 
 import gengine.GPanel;
 import gengine.drawable.GSprite;
 import gengine.logic.GPoint;
 import gengine.logic.GVector;
+import gengine.mouse_follower.MouseFollower;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import org.jetbrains.annotations.NotNull;

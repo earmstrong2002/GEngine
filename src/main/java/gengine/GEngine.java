@@ -3,8 +3,8 @@ package gengine;
 import gengine.drawable.Circle;
 import gengine.logic.GPoint;
 import gengine.mouse_follower.MouseFollower;
-import gengine.mouse_follower.RubberBandMouseFollower;
-import gengine.mouse_follower.RubberBandMouseFollowerSprite;
+import gengine.mouse_follower.rubber_band_mouse_follower.RubberBandMouseFollower;
+import gengine.mouse_follower.rubber_band_mouse_follower.RubberBandMouseFollowerSprite;
 import java.awt.*;
 import java.util.logging.Logger;
 

@@ -71,6 +71,11 @@ public class RubberBandMouseFollower extends MouseFollower {
     this.sprite = sprite;
   }
 
+  @Override
+  public boolean isAlwaysOnTop() {
+    return false;
+  }
+
   public double getSpeed() {
     return getVelocity().getMagnitude();
   }

@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class RubberBandMouseFollower extends MouseFollower {
   private GSprite sprite;
+  private int renderLayer;
   private double accelerationRate;
   private double accelerationRateWhileMouseIsPressed;
   private GVector velocity;
@@ -23,6 +24,15 @@ public class RubberBandMouseFollower extends MouseFollower {
     super(sprite, accelerationRate, deadZoneRadius);
     setVelocity(new GVector());
     setAccelerationRateWhileMouseIsPressed(accelerationRateWhileCLicked);
+    setRenderLayer(1);
+  }
+
+  private void setRenderLayer(int renderLayer) {
+    if (renderLayer < 0) {
+      throw new IllegalArgumentException(
+          renderLayer + " is not a valid render layer because it is negative.");
+    }
+    this.renderLayer = renderLayer;
   }
 
   @Override
@@ -74,6 +84,11 @@ public class RubberBandMouseFollower extends MouseFollower {
   @Override
   public boolean isAlwaysOnTop() {
     return false;
+  }
+
+  @Override
+  public int getRenderLayer() {
+    return 0;
   }
 
   public double getSpeed() {

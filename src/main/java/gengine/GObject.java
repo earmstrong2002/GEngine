@@ -19,4 +19,5 @@ public interface GObject {
   void update(GPanel panel);
 
   boolean isAlwaysOnTop();
+  int getRenderLayer();
 }

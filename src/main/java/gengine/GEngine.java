@@ -60,6 +60,7 @@ public class GEngine {
         new RubberBandMouseFollowerSprite(circle, new GPoint());
     MouseFollower mouseFollower = new RubberBandMouseFollower(mouseFollowerSprite, 0.02, 0.1, 1);
     gPanel.addGObject(mouseFollower);
+    gPanel.addGObject(new DebugDisplay());
     gPanel.addMouseListener(gPanel.getEventManager());
     GFrame gFrame = new GFrame(gPanel);
     gFrame.setTitle("Mouse Following Demo");

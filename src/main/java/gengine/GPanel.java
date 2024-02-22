@@ -4,6 +4,8 @@ import gengine.logic.GPoint;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
@@ -15,8 +17,10 @@ import org.jetbrains.annotations.NotNull;
 public class GPanel extends JPanel {
   /** A list of all GObjects contained by this panel. */
   private final List<GObject> children;
+  private final RenderLayerComparator renderLayerComparator = new RenderLayerComparator();
 
   private final List<Integer> keysPressed;
+  public static final int ALWAYS_ON_TOP = 0;
 
   private final Point mousePosition;
   private boolean mouseIsPressed;
@@ -39,17 +43,22 @@ public class GPanel extends JPanel {
    * @param object the GObject to add
    */
   public void addGObject(@NotNull GObject object) {
-    children.add(object);
+    addGObject(object,children.size());
   }
 
   public void addGObject(@NotNull GObject object, int index) {
-    if (index >= children.size() || index < 0) {
+    if (index > children.size() || index < 0) {
       throw new IllegalArgumentException(
           String.format(
               "Cannot add %s to %s at index %d because %d is invalid index .",
               object, this, index, index));
     }
     children.add(index, object);
+    balanceChildren();
+  }
+
+  private void balanceChildren() {
+    children.sort(renderLayerComparator);
   }
 
   /** Updates all GObjects in this panel, then repaints this panel. */
@@ -211,5 +220,12 @@ public class GPanel extends JPanel {
      */
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {}
+  }
+  public static class RenderLayerComparator implements Comparator<GObject> {
+
+    @Override
+    public int compare(GObject o1, GObject o2) {
+      return o1.getRenderLayer() - o2.getRenderLayer();
+    }
   }
 }

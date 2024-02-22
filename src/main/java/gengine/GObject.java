@@ -17,4 +17,6 @@ public interface GObject {
    * @param panel the panel that contains this object.
    */
   void update(GPanel panel);
+
+  boolean isAlwaysOnTop();
 }

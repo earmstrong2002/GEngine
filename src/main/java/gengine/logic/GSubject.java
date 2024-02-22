@@ -3,8 +3,8 @@ package gengine.logic;
 import java.util.List;
 
 /**
- * Classes that implement the {@code GSubject} interface have all the necessary methods to maintain
- * a subject in a subject-observer pattern.
+ * Classes that implement the {@code GSubject} interface have all the necessary methods to interact
+ * with the {@link GObserver} interface as the subject in a subject-observer relationship.
  */
 public interface GSubject {
   /**

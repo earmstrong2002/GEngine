@@ -2,13 +2,11 @@ package gengine.mouse_follower;
 
 import gengine.GObject;
 import gengine.GPanel;
-import gengine.logic.GPoint;
 import gengine.drawable.GSprite;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import gengine.logic.GPoint;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class MouseFollower implements GObject, MouseListener, MouseMotionListener {
+public abstract class MouseFollower implements GObject{
   private GSprite sprite;
   private double accelerationRate;
   private double deadZoneRadius;

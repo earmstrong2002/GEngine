@@ -2,8 +2,9 @@ package gengine;
 
 import gengine.logic.GPoint;
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.List;
+import java.awt.event.*;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,14 +13,24 @@ import org.jetbrains.annotations.NotNull;
  * toward simple game development.
  */
 public class GPanel extends JPanel {
-
   /** A list of all GObjects contained by this panel. */
-  List<GObject> children;
+  private final Set<GObject> children;
+
+  private final Set<Integer> keysPressed;
+
+  private final Point mousePosition;
+  private boolean mouseIsPressed;
 
   /** Instantiates a new GPanel. */
   public GPanel() {
     super();
-    children = new LinkedList<>();
+    children = new HashSet<>();
+    keysPressed = new HashSet<>();
+    mousePosition = new Point();
+  }
+
+  public GEventManager getEventManager() {
+    return new GEventManager();
   }
 
   /**
@@ -33,10 +44,22 @@ public class GPanel extends JPanel {
 
   /** Updates all GObjects in this panel, then repaints this panel. */
   public void update() {
+    updateMousePosition();
+    ping();
+    paintImmediately(getBounds());
+  }
+
+  private void updateMousePosition() {
+    Point newPosition = getMousePosition();
+    if (newPosition != null) {
+      mousePosition.setLocation(newPosition);
+    }
+  }
+
+  private void ping() {
     for (GObject child : children) {
       child.update(this);
     }
-    paintImmediately(getBounds());
   }
 
   /**
@@ -56,15 +79,127 @@ public class GPanel extends JPanel {
    * Retrieves the position of the mouse cursor relative to the panel, in meters (as opposed to the
    * return of {@code getMousePosition()}, which is in pixels).
    *
-   * @return
+   * @return The position of the mouse cursor relative to the panel, in meters.
    */
   public GPoint getMousePositionMeters() {
-    Point mousePosition = getMousePosition();
-    if (mousePosition == null) {
-      return null;
+    return GPoint.pixelsToMeters(mousePosition);
+  }
+
+  public boolean mouseIsPressed() {
+    return mouseIsPressed;
+  }
+
+  private void setMouseIsPressed(boolean b) {
+    mouseIsPressed = b;
+  }
+
+  private class GEventManager
+      implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
+    /**
+     * Invoked when a key has been typed. See the class description for {@link KeyEvent} for a
+     * definition of a key typed event.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+    /**
+     * Invoked when a key has been pressed. See the class description for {@link KeyEvent} for a
+     * definition of a key pressed event.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void keyPressed(KeyEvent e) {
+      keysPressed.add(e.getKeyCode());
     }
-    double x = GEngine.pixelsToMeters(mousePosition.x);
-    double y = GEngine.pixelsToMeters(mousePosition.y);
-    return new GPoint(x, y);
+
+    /**
+     * Invoked when a key has been released. See the class description for {@link KeyEvent} for a
+     * definition of a key released event.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void keyReleased(KeyEvent e) {
+      keysPressed.remove(e.getKeyCode());
+    }
+
+    /**
+     * Invoked when the mouse button has been clicked (pressed and released) on a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {}
+
+    /**
+     * Invoked when a mouse button has been pressed on a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
+      setMouseIsPressed(true);
+    }
+
+    /**
+     * Invoked when a mouse button has been released on a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseReleased(MouseEvent e) {
+      setMouseIsPressed(false);
+    }
+
+    /**
+     * Invoked when the mouse enters a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    /**
+     * Invoked when the mouse exits a component.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    /**
+     * Invoked when a mouse button is pressed on a component and then dragged. {@code MOUSE_DRAGGED}
+     * events will continue to be delivered to the component where the drag originated until the
+     * mouse button is released (regardless of whether the mouse position is within the bounds of
+     * the component).
+     *
+     * <p>Due to platform-dependent Drag&amp;Drop implementations, {@code MOUSE_DRAGGED} events may
+     * not be delivered during a native Drag&amp;Drop operation.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseDragged(MouseEvent e) {}
+
+    /**
+     * Invoked when the mouse cursor has been moved onto a component but no buttons have been
+     * pushed.
+     *
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseMoved(MouseEvent e) {}
+
+    /**
+     * Invoked when the mouse wheel is rotated.
+     *
+     * @param e the event to be processed
+     * @see MouseWheelEvent
+     */
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {}
   }
 }

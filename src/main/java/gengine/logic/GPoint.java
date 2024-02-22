@@ -1,5 +1,6 @@
 package gengine.logic;
 
+import gengine.GEngine;
 import java.awt.*;
 
 /**
@@ -18,7 +19,7 @@ public class GPoint {
    *
    * @param point the point whose coordinates are to be copied.
    */
-  public GPoint(Point point) {
+  private GPoint(Point point) {
     this.x = point.x;
     this.y = point.y;
   }
@@ -37,6 +38,12 @@ public class GPoint {
   public GPoint(double x, double y) {
     this.x = x;
     this.y = y;
+  }
+
+  public static GPoint pixelsToMeters(Point point) {
+    double x = GEngine.pixelsToMeters(point.x);
+    double y = GEngine.pixelsToMeters(point.y);
+    return new GPoint(x, y);
   }
 
   /**

@@ -3,8 +3,8 @@ package gengine;
 import gengine.logic.GPoint;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public class GPanel extends JPanel {
   /** A list of all GObjects contained by this panel. */
-  private final Set<GObject> children;
+  private final List<GObject> children;
 
-  private final Set<Integer> keysPressed;
+  private final List<Integer> keysPressed;
 
   private final Point mousePosition;
   private boolean mouseIsPressed;
@@ -24,8 +24,8 @@ public class GPanel extends JPanel {
   /** Instantiates a new GPanel. */
   public GPanel() {
     super();
-    children = new HashSet<>();
-    keysPressed = new HashSet<>();
+    children = new ArrayList<>();
+    keysPressed = new ArrayList<>();
     mousePosition = new Point();
   }
 
@@ -40,6 +40,16 @@ public class GPanel extends JPanel {
    */
   public void addGObject(@NotNull GObject object) {
     children.add(object);
+  }
+
+  public void addGObject(@NotNull GObject object, int index) {
+    if (index >= children.size() || index < 0) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Cannot add %s to %s at index %d because %d is invalid index .",
+              object, this, index, index));
+    }
+    children.add(index, object);
   }
 
   /** Updates all GObjects in this panel, then repaints this panel. */

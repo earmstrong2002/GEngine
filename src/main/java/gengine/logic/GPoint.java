@@ -51,6 +51,12 @@ public class GPoint {
     return new Point(x, y);
   }
 
+  public static Point metersToPixels(GPoint point) {
+    int x = GEngine.metersToPixels(point.x);
+    int y = GEngine.metersToPixels(point.y);
+    return new Point(x, y);
+  }
+
   /**
    * Calculates the distance between this point and another.
    *

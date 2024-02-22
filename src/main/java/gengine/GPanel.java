@@ -43,7 +43,7 @@ public class GPanel extends JPanel {
    * @param object the GObject to add
    */
   public void addGObject(@NotNull GObject object) {
-    addGObject(object,children.size());
+    addGObject(object, children.size());
   }
 
   public void addGObject(@NotNull GObject object, int index) {
@@ -52,6 +52,9 @@ public class GPanel extends JPanel {
           String.format(
               "Cannot add %s to %s at index %d because %d is invalid index .",
               object, this, index, index));
+    }
+    if (object instanceof JComponent) {
+      add((JComponent) object);
     }
     children.add(index, object);
     balanceChildren();

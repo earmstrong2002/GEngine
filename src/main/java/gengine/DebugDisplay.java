@@ -7,6 +7,8 @@ import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 
 public class DebugDisplay implements GObject {
+  // TODO: Add actual functionality to debug display
+  // TODO: Position and style debug display properly.
   public static final Color BACKGROUND_COLOR = Color.WHITE;
   public static final Color TEXT_COLOR = Color.BLACK;
   private final DebugDisplayPanel panel;
@@ -65,9 +67,7 @@ public class DebugDisplay implements GObject {
     private static Dimension size = new Dimension(100, 100);
 
     @Override
-    public void draw(Graphics graphics) {
-      super.paintImmediately(getBounds());
-    }
+    public void draw(Graphics graphics) {}
 
     @Override
     public GPoint getPosition() {

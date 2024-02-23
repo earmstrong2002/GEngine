@@ -4,7 +4,6 @@ import gengine.logic.GPoint;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.*;
@@ -15,13 +14,13 @@ import org.jetbrains.annotations.NotNull;
  * toward simple game development.
  */
 public class GPanel extends JPanel {
-  /** A list of all GObjects contained by this panel. */
-  private final List<GObject> children;
-  private final RenderLayerComparator renderLayerComparator = new RenderLayerComparator();
-
-  private final List<Integer> keysPressed;
   public static final int ALWAYS_ON_TOP = 0;
 
+  /** A list of all GObjects contained by this panel. */
+  private final List<GObject> children;
+
+  private final RenderLayerComparator renderLayerComparator = new RenderLayerComparator();
+  private final List<Integer> keysPressed;
   private final Point mousePosition;
   private boolean mouseIsPressed;
 
@@ -53,8 +52,8 @@ public class GPanel extends JPanel {
               "Cannot add %s to %s at index %d because %d is invalid index .",
               object, this, index, index));
     }
-    if (object instanceof JComponent) {
-      add((JComponent) object);
+    if (object.getSprite() instanceof JComponent) {
+      add((JComponent) object.getSprite());
     }
     children.add(index, object);
     balanceChildren();
@@ -113,6 +112,14 @@ public class GPanel extends JPanel {
 
   private void setMouseIsPressed(boolean b) {
     mouseIsPressed = b;
+  }
+
+  public static class RenderLayerComparator implements Comparator<GObject> {
+
+    @Override
+    public int compare(GObject o1, GObject o2) {
+      return o1.getRenderLayer() - o2.getRenderLayer();
+    }
   }
 
   private class GEventManager
@@ -223,12 +230,5 @@ public class GPanel extends JPanel {
      */
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {}
-  }
-  public static class RenderLayerComparator implements Comparator<GObject> {
-
-    @Override
-    public int compare(GObject o1, GObject o2) {
-      return o1.getRenderLayer() - o2.getRenderLayer();
-    }
   }
 }

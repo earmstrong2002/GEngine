@@ -46,7 +46,6 @@ public class DebugDisplay implements GObject {
   @Override
   public GSprite getSprite() {
     return panel;
-    return debugDisplayPanel;
   }
 
   @Override
@@ -57,20 +56,14 @@ public class DebugDisplay implements GObject {
     return true;
   }
 
-  private class DebugDisplayPanel extends JPanel implements GSprite {
-
-    public DebugDisplayPanel() {
-      super(new FlowLayout());
-    }
-
   @Override
   public int getRenderLayer() {
     return 0;
   }
 
-
   private static class DebugDisplayPanel extends JPanel implements GSprite {
     private static Dimension size = new Dimension(100, 100);
+
     @Override
     public void draw(Graphics graphics) {
       super.paintImmediately(getBounds());
@@ -84,9 +77,6 @@ public class DebugDisplay implements GObject {
     @Override
     public void setPosition(@NotNull GPoint position) {
       super.setBounds(new Rectangle(GPoint.metersToPixels(position), new Dimension(1000, 100)));
-    }
-    public void setPosition(@NotNull GPoint position) {
-      setBounds(new Rectangle(GPoint.metersToPixels(position), size));
     }
   }
 }

@@ -45,15 +45,10 @@ public class GPoint {
     double y = GEngine.pixelsToMeters(point.y);
     return new GPoint(x, y);
   }
+
   public static Point metersToPixels(GPoint gPoint) {
     int x = GEngine.metersToPixels(gPoint.x);
     int y = GEngine.metersToPixels(gPoint.y);
-    return new Point(x, y);
-  }
-
-  public static Point metersToPixels(GPoint point) {
-    int x = GEngine.metersToPixels(point.x);
-    int y = GEngine.metersToPixels(point.y);
     return new Point(x, y);
   }
 

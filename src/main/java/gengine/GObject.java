@@ -1,6 +1,6 @@
 package gengine;
 
-import gengine.drawable.GSprite;
+import gengine.visuals.GSprite;
 
 /** The GObject interface represents game objects. */
 public interface GObject {
@@ -19,5 +19,6 @@ public interface GObject {
   void update(GPanel panel);
 
   boolean isAlwaysOnTop();
+
   int getRenderLayer();
 }

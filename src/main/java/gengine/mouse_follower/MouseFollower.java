@@ -2,8 +2,8 @@ package gengine.mouse_follower;
 
 import gengine.GObject;
 import gengine.GPanel;
-import gengine.drawable.GSprite;
 import gengine.logic.GPoint;
+import gengine.visuals.GSprite;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class MouseFollower implements GObject{

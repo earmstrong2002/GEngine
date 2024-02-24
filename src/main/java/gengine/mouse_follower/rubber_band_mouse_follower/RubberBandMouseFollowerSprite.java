@@ -72,10 +72,6 @@ public class RubberBandMouseFollowerSprite implements GSprite {
     this.position = position;
   }
 
-  public GPoint getMousePosition() {
-    return mousePosition;
-  }
-
   public void setMousePosition(@NotNull GPoint mousePosition) {
     this.mousePosition = mousePosition;
   }

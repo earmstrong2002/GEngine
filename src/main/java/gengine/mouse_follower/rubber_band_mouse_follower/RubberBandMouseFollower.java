@@ -74,13 +74,8 @@ public class RubberBandMouseFollower extends MouseFollower {
   }
 
   @Override
-  public boolean isAlwaysOnTop() {
-    return false;
-  }
-
-  @Override
   public int getRenderLayer() {
-    return 0;
+    return renderLayer;
   }
 
   public double getSpeed() {

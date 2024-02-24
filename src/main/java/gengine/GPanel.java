@@ -26,7 +26,7 @@ public class GPanel extends JPanel {
 
   /** Instantiates a new GPanel. */
   public GPanel() {
-    super();
+    super(null);
     children = new ArrayList<>();
     keysPressed = new ArrayList<>();
     mousePosition = new Point();

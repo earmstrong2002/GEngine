@@ -1,10 +1,10 @@
 package gengine.mouse_follower.rubber_band_mouse_follower;
 
 import gengine.GPanel;
-import gengine.drawable.GSprite;
 import gengine.logic.GPoint;
 import gengine.logic.GVector;
 import gengine.mouse_follower.MouseFollower;
+import gengine.visuals.GSprite;
 import org.jetbrains.annotations.NotNull;
 
 public class RubberBandMouseFollower extends MouseFollower {
@@ -25,14 +25,6 @@ public class RubberBandMouseFollower extends MouseFollower {
     setVelocity(new GVector());
     setAccelerationRateWhileMouseIsPressed(accelerationRateWhileCLicked);
     setRenderLayer(1);
-  }
-
-  private void setRenderLayer(int renderLayer) {
-    if (renderLayer < 0) {
-      throw new IllegalArgumentException(
-          renderLayer + " is not a valid render layer because it is negative.");
-    }
-    this.renderLayer = renderLayer;
   }
 
   @Override
@@ -132,6 +124,14 @@ public class RubberBandMouseFollower extends MouseFollower {
   public void setAccelerationRateWhileMouseIsPressed(double accelerationRateWhileMouseIsPressed) {
     checkAccelerationRate(accelerationRateWhileMouseIsPressed);
     this.accelerationRateWhileMouseIsPressed = accelerationRateWhileMouseIsPressed;
+  }
+
+  private void setRenderLayer(int renderLayer) {
+    if (renderLayer < 0) {
+      throw new IllegalArgumentException(
+          renderLayer + " is not a valid render layer because it is negative.");
+    }
+    this.renderLayer = renderLayer;
   }
 
   private void checkAccelerationRate(double accelerationRate) {

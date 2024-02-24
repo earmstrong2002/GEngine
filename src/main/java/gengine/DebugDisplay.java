@@ -1,7 +1,7 @@
 package gengine;
 
-import gengine.drawable.GSprite;
 import gengine.logic.GPoint;
+import gengine.visuals.GSprite;
 import java.awt.*;
 import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +64,12 @@ public class DebugDisplay implements GObject {
   }
 
   private static class DebugDisplayPanel extends JPanel implements GSprite {
-    private static Dimension size = new Dimension(100, 100);
+    private static Dimension size = new Dimension(200, 200);
+
+    public DebugDisplayPanel() {
+      super();
+      setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    }
 
     @Override
     public void draw(Graphics graphics) {}
@@ -76,7 +81,7 @@ public class DebugDisplay implements GObject {
 
     @Override
     public void setPosition(@NotNull GPoint position) {
-      super.setBounds(new Rectangle(GPoint.metersToPixels(position), new Dimension(1000, 100)));
+      super.setBounds(new Rectangle(GPoint.metersToPixels(position), size));
     }
   }
 }

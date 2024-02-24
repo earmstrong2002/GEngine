@@ -5,7 +5,7 @@ import gengine.mouse_follower.MouseFollower;
 import gengine.mouse_follower.rubber_band_mouse_follower.RubberBandMouseFollower;
 import gengine.mouse_follower.rubber_band_mouse_follower.RubberBandMouseFollowerSprite;
 import gengine.visuals.Circle;
-import gengine.visuals.GColors;
+import gengine.visuals.color.GColors;
 import java.awt.*;
 import java.util.logging.Logger;
 

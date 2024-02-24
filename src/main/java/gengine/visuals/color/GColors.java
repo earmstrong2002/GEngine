@@ -1,4 +1,4 @@
-package gengine.visuals;
+package gengine.visuals.color;
 
 import java.awt.*;
 

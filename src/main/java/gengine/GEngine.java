@@ -1,10 +1,11 @@
 package gengine;
 
-import gengine.drawable.Circle;
 import gengine.logic.GPoint;
 import gengine.mouse_follower.MouseFollower;
 import gengine.mouse_follower.rubber_band_mouse_follower.RubberBandMouseFollower;
 import gengine.mouse_follower.rubber_band_mouse_follower.RubberBandMouseFollowerSprite;
+import gengine.visuals.Circle;
+import gengine.visuals.GColors;
 import java.awt.*;
 import java.util.logging.Logger;
 
@@ -54,8 +55,8 @@ public class GEngine {
    */
   public static void main(String[] args) {
     GPanel gPanel = new GPanel();
-    gPanel.setBackground(Color.BLACK);
-    Circle circle = new Circle(1, new GPoint(), Color.WHITE, Color.RED, 1.3);
+    gPanel.setBackground(GColors.PIGMENT_GREEN);
+    Circle circle = new Circle(1, new GPoint(), GColors.NYANZA, GColors.INDIA_GREEN, 1.3);
     RubberBandMouseFollowerSprite mouseFollowerSprite =
         new RubberBandMouseFollowerSprite(circle, new GPoint());
     MouseFollower mouseFollower = new RubberBandMouseFollower(mouseFollowerSprite, 0.02, 0.1, 1);

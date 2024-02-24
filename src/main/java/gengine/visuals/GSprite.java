@@ -1,4 +1,4 @@
-package gengine.drawable;
+package gengine.visuals;
 
 import gengine.logic.GPoint;
 import org.jetbrains.annotations.NotNull;

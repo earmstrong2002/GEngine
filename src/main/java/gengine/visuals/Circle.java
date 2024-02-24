@@ -1,4 +1,4 @@
-package gengine.drawable;
+package gengine.visuals;
 
 import gengine.GEngine;
 import gengine.logic.GPoint;

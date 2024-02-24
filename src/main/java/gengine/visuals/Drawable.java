@@ -1,4 +1,4 @@
-package gengine.drawable;
+package gengine.visuals;
 
 import java.awt.*;
 

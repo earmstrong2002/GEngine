@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class DebugDisplay implements GObject {
   // TODO: Add actual functionality to debug display
-  // TODO: Position and style debug display properly.
   private static final Color BACKGROUND_COLOR = new Color(0, 0, 0, 127);
   private static final Color FOREGROUND_COLOR = Color.WHITE;
 
@@ -47,10 +46,6 @@ public class DebugDisplay implements GObject {
     panel.add(renderTimeWidget);
   }
 
-  private Component createFpsWidget() {
-    return null;
-  }
-
   @Override
   public GSprite getSprite() {
     return panel;
@@ -58,11 +53,6 @@ public class DebugDisplay implements GObject {
 
   @Override
   public void update(GPanel panel) {}
-
-  @Override
-  public boolean isAlwaysOnTop() {
-    return true;
-  }
 
   @Override
   public int getRenderLayer() {
